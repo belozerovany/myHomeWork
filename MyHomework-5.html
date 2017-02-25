@@ -11,43 +11,44 @@
 <ul id="myUl"></ul>
 <script>
 	var word = prompt ('Write please some sentence ','');
-	console.log(typeof word);
-		var list = word.split(' ');
+		console.log(typeof word);
+	var list = word.split(' ');
 		console.log(list);
 
 	var myUl = document.getElementById('myUl');
-	/*var childWord = list[i];*/
-		
+
+	var myA = 0;
+	for (var j = 0; word.length > j; j++) {
+
+			if(word[j].indexOf('a'||'а') != -1){
+			console.log('word[j].indexOf','да');
+			myA++;
+			
+			} else {
+				console.log('word[j].indexOf','нет');
+			}
+	};
+
+	alert(myA);	
+
 	for (var i = 0; i <= list.length-1; i++) {
 		console.log(list[i]);
 		console.log(typeof list[i]);
 
-			var childWord = list[i];
-			var myA=0;
-
-			if(childWord.indexOf('a') != -1){
-			console.log('нет');
-			myA++;
-			} else {
-				console.log('нет');
-			}
-		
-			myLi = document.createElement('li');
+		myLi = document.createElement('li');
 			console.log(myLi);
 			myLi.innerHTML= list[i];
+			myUl.appendChild(myLi);	
+		
+	}
+    var child = myUl.firstElementChild;
+    console.log("child",child);
+    var myChild = child.innerHTML.toUpperCase();
+    console.log("myChild",myChild);
+    child.innerHTML = myChild;
+	/*var firtsPhrase = myUl.children[0].innerHTML.toUpperCase();
+        myUl.children[0].innerHTML = firtsPhrase;*/
 
-			 /* myUL.insertBefore(myLi);*/
-		    myUl.appendChild(myLi);	   
-		   /* console.log("firstChild",firstChild);*/
-		/* console.log(word.children[0]);*/
-
-		  /*var firstChild = word.children[0].innerHTML.toUpperCase();*/
-	};
-
-	/*var upp = myUl.children;
-	var firstChild = upp.firstElementChild;
-	console.log("firstChild", firstChild );
-	var child = firstChild.toUpperCase();	*/	
 
 </script>
 </body>
