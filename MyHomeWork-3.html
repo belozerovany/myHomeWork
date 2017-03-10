@@ -1,0 +1,123 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.selected {
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	
+<h2>Мой список</h2>
+<ul id="Element">
+	<li>Элемент 1</li>
+	<li>Элемент 2</li>
+	<li>Элемент 3</li>
+	<li>Элемент 4</li>
+	<li>Элемент 5</li>
+</ul>
+<form style="width: 150px; ">
+<input type="button" onclick="TakeFirstElement()" style="width: 200px; margin-bottom:5px;" value="Выбрать первый элемент">
+<input type="button" onclick="TakeLastElement()" style="width: 200px; margin-bottom:5px;" value="Выбрать последний элемент">
+<input type="button" onclick="TakeNextElement()" style="width: 200px; margin-bottom:5px;"value="Выбрать следующий элемент">
+<input type="button" onclick="TakePrevElement()" style="width: 200px; margin-bottom:5px;"value="Выбрать предыдущий элемент">
+<input type="button" onclick="ToInsertElement()" style="width: 200px; margin-bottom:5px;"value="Добавить элемент" >
+<input type="button" onclick="RemoveElement()" style="width: 200px; margin-bottom:5px;"value="Удалить элемент" >
+ <!-- <input type="button" onclick="RemoveAllElements()" style="width: 200px; margin-bottom:5px;"value="Удалить все элементы" > --> 
+<input type="button" onclick="FirstInsertElement()" style="width: 200px; margin-bottom:5px;" value="Добавить в начало" >
+</form> 
+<script>
+		function TakeFirstElement() {
+			var ul = document.getElementById('Element'),
+			first = ul.firstElementChild;
+			first.setAttribute( 'style', 'color:red');		
+		};
+
+
+		function TakeLastElement() {
+			var last = document.getElementById('Element'),
+			li = last.lastElementChild;
+			li.setAttribute( 'style', 'color:blue');	
+		};
+
+
+		function TakeNextElement() { 
+			var list = document.getElementById('Element'),
+			li = list.querySelector('.selected') || {},
+			next = li.nextElementSibling || list.firstElementChild;
+			li.className = "";
+			next.className = "selected";		
+			next.setAttribute('style','color:#FF1493');
+				if(li.setAttribute) {
+					li.setAttribute('style','color:black');
+				}	
+		};
+
+
+      function TakePrevElement() {
+			var list = document.getElementById('Element');
+			li = list.querySelector('#selected') || {},
+			next = li.previousElementSibling || list.lastElementChild;
+			li.id = "";
+			next.id = "selected";		
+			next.setAttribute('style','color:#FF1493');
+				if(li.setAttribute) {
+					li.setAttribute('style','color:black');
+				}
+		};
+
+
+		 function ToInsertElement() {
+			var doc = document.getElementById('Element'),	
+			newEl = document.createElement('li');
+			newEl.innerHTML = 'Новый элемент';
+			console.log(newEl);
+			doc.appendChild(newEl);
+		};
+
+		function RemoveElement() {
+			var list = document.getElementById('Element'),
+			allli = list.getElementsByTagName('li');
+			if(allli.length > 5){    
+			    console.log(allli.length);
+				var last = list.lastElementChild;
+				list.removeChild(last);
+				}
+			
+		};
+	 	/*function RemoveElement() {    //вариант который удаляет все li
+			var list = document.getElementById('Element');
+			if(list.nodeType ===1){
+			    if(list.childNodes.length-1 >= 5){				
+				var last = list.lastElementChild;
+				list.removeChild(last);
+				}
+			}
+		};
+*/
+		/*function RemoveAllElements() {//В РАБОТЕ
+			var list = document.getElementsByClassName('child');
+			for( var i =list.length-1; i > 4; i++) {
+				if(i>4)
+				var last = list.lastChild;
+				list.removeChild(last);
+			}
+		};
+*/
+		function FirstInsertElement() {
+			var list = document.getElementById('Element'),
+		    firstList = document.createElement('li');
+		    firstList.innerHTML = '<b>' + 'Новый элемент' +'</b>';
+		    //console.log(firstList);
+		    list.insertBefore(firstList, list.firstElementChild);
+		};
+
+	</script>
+</body>
+</html>
+

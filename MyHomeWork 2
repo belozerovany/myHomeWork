@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MyHomeWork2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* Задание заключается в том, что бы на сайте  http://stackoverflow.com/
+            всем детям .question-summary добавить padding и margin, при чем с увеличением значения с 0 элемента колекции. */
+ function Myfunction() {
+		var perents = document.getElementById('question-mini-list'),
+		nextElement= document.querySelectorAll('.question-summary'),
+            children = perents.firstElementChild;
+            console.log ('perents',perents);
+            console.log ('nextElement',nextElement);
+            console.log ('children',children);
+            perents.style.cssText = "border:2px solid green",
+            children.style.cssText = "border:2px solid green";
+            for (var i = 0; i < nextElement.length; i++) {
+            	console.log('nextElement',nextElement.length);
+            	nextElement[i].style.cssText = "padding:"+i+7+"px;margin:"+i+7+"px;border:2px solid green";         	  	
+                  }
+
+		};
+      /* Задание заключается в том, что бы на сайте  http://stackoverflow.com/
+            всем детям .question-summary. Четным элементам в нутрь мы добавляем <p></p> в начало всех элементов, а не четным  в нутрь мы добавляем <span></span> в конце всех элементов*/
+
+      function Myfunction() {
+            var perents = document.querySelector('#question-mini-list'),
+            baby = perents.children,
+            myP = "<p>А вот и p</p>",
+            mySpan = "<span>А вот и span</span>";  
+            console.log ('perents',perents);
+            console.log ('baby',baby);
+          
+            for (var i = 0; i < baby.length; i++) {
+                  console.log('cildren',baby.length);
+                  if(i % 2 ==0){
+                    console.log(i);
+                    baby[i].insertAdjacentHTML('afterBegin', myP);
+                  } else {
+                        console.log(i);
+                        baby[i].insertAdjacentHTML('beforeEnd', mySpan);
+                  }
+
+            }
+      };
+
+
+
+
+	</script>
+</body>
+</html>
+	

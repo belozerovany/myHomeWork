@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider oop</title>
+</head>
+<body>
+<style>
+	#bigslide{
+		width: 400px;
+		height: 200px;
+		background: grey;
+	}
+	#slide-colection{
+		width: 400px
+		background: grey;
+		box-sizing: border-box;
+		display: block;
+
+	}
+	#slide-colection img{
+		width: 50px;
+		height: 50px;
+		padding: 5px 20px;
+	}
+</style>
+	<div id="bigslide"></div>
+	<div id="slide-colection">
+		<img src="http://cs8.pikabu.ru/images/previews_comm/2016-04_6/1461707435173772356.jpg" alt="img">
+		<img src="http://plitkaplus.ru/upload/resize_cache/iblock/5a1/400_400_1/5a165638d01c016a73765850653e7a66.jpg" alt="img">
+		<img src="http://www.pixelbox.ru/upload/image_topic/929.jpg" alt="img">
+		<img src="http://plitkaplus.ru/upload/resize_cache/iblock/abb/400_400_1/abb5bdc9d7928226c4ece56a48111e92.jpg" alt="img">
+	</div>
+	<script>
+		function Slide() {
+			this.slide = document.querySelector('#bigslide'),
+			this.colection = document.getElementById('slide-colection')
+			console.log('colection',this.colection);
+			console.log('block',this.slide);
+			this.first();
+			this.colection.addEventListener("click",this.weClick.bind(this))
+		}
+
+
+		Slide.prototype.first =function () {	
+			var a = this.colection.firstElementChild.getAttribute('src');
+			this.slide.insertAdjacentHTML('afterbegin','<img src="'+a+'" alt="img">' );
+		   console.log('a',a);
+		}
+
+		Slide.prototype.weClick = function (event) {	
+			var b = event.target.getAttribute('src');
+        	this.slide.firstElementChild.setAttribute("src",b);
+
+		}
+		
+			
+		new Slide();
+	</script>
+</body>
+</html>

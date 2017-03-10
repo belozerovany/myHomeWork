@@ -1,0 +1,62 @@
+<!-- 
+сделать пример при наведении мыши к одному из блоков, цвет блока должен измениться, на уникальный, такой которого еще нету у существующих блоков. Также выведите в блок текстовое оповещение о информации цвета, который используется для фона данного блока. При попытке закрыть вкладку, придупредите пользователя о том что информация будет утеряна. Используйте window.onload.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+<style>
+        div {
+            background-color:green;
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+</style>
+	<div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+window.onload =  function () {
+    		var allDiv = document.querySelectorAll('div');	
+    	 	console.log('allDiv', allDiv);
+    	function changecolor(){
+    		var colorAll = '0123456789ABCDEF'.split(''); 
+    		var creatureNewColor ='#'
+    		for (var i = 0; i < 6; i++) {
+    			creatureNewColor += colorAll[Math.floor(Math.random() * 16)];
+    			console.log('colorAll[i]',colorAll[i]);
+    			console.log('creatureNewColor',creatureNewColor);
+    			}	
+    		return creatureNewColor;
+    	};
+
+
+    	for (var i = 0; i < allDiv.length; i++) {
+    		console.log('allDiv[i]', allDiv[i]);
+    	
+    		allDiv[i].onclick = myClick;
+    		function myClick () {
+               	this.style.backgroundColor = "blue";  
+            };
+
+            allDiv[i].onmouseover = myHover;
+            function myHover(e){
+            var newColor = changecolor();
+            console.log('newColor',newColor);
+            this.style.backgroundColor = "" + newColor + "";
+            this.innerHTML = this.style.backgroundColor;
+            }; 
+        };		
+};
+    	
+    </script>
+</body>
+</html>

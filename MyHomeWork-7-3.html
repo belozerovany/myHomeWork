@@ -1,0 +1,39 @@
+<!--Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт. При клике на ссылку див пропадает, если повторно нажать ссылку див и текст должны вернуться. Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HomeWork-7</title>
+
+</head>
+<body>
+	<a href="#" id="a">Кликни
+		<div class="text">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius sequi ab deserunt asperiores ullam quia eum ut, nobis. Soluta animi quod aperiam, ad sapiente nobis praesentium voluptas vitae velit.
+		</div>
+		<div>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius sequi ab deserunt asperiores ullam quia eum ut, nobis. Soluta animi quod aperiam, ad sapiente nobis praesentium voluptas vitae velit.
+		</div>
+	</a>	
+	<button>remuveEventListner</button>
+<script>
+	window.onload = function () {
+		var a = document.getElementById('a'),
+		divText = document.querySelector('.text'),
+		first = a.firstElementChild;
+		console.log(divText);
+		a.addEventListener('click', hideElement);
+			function hideElement(){
+				
+				console.log(first);
+			
+				divText.style.display = (divText.style.display == 'none') ? 'block' : 'none';
+
+			}
+
+	}
+</script>
+</body>
+</html>

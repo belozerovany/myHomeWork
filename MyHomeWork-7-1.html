@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<style>
+	section p{
+		display: block;
+		width: 600px;
+		margin-bottom: 20px;
+		background: grey;
+		display: block;
+	}
+	section input{
+		padding: 5px;
+		background: red;
+		margin: 5px;
+	}
+</style>
+	<section>
+		<div id ="myDiv">
+			<p  about="Elephant">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus laudantium velit, dicta illo distinctio natus officia, in voluptatum esse repudiandae, earum unde odit quaerat animi facere aspernatur molestiae facilis, expedita.<br>
+			<input type="button" value="удалить">
+			</p>
+			<p  about="Elephant">Autem quisquam necessitatibus distinctio quasi voluptas facilis eum odio expedita facere ex omnis placeat magni, quod ipsam cupiditate laudantium, eaque dolorem sint commodi rerum esse quia at repudiandae beatae. Magni.<br>
+			<input type="button" value="удалить"></p>
+			<p  about="Elephant">Fugiat repellendus vel tempore, ea accusamus quo corrupti quaerat quisquam quos labore officia. Soluta incidunt, earum possimus hic officia, eveniet quam laudantium. Ratione, consequatur! Accusantium tempora, repellat dicta quidem quibusdam!<br><input type="button" value="удалить"></p>
+			<p  about="Elephant">Praesentium ipsa quas, incidunt et, nesciunt odit cumque dolor reprehenderit sed ea tempore, quis illum reiciendis earum. Officia autem, quod cupiditate nemo, ullam eaque illum at aperiam perferendis doloribus nihil.<br>
+			<input type="button" value="удалить"></p>
+			<p  about="Elephant">Enim quis dolorum id et assumenda maiores consequuntur non ut quae quibusdam laborum repudiandae itaque aliquid illo, asperiores voluptate veniam culpa reprehenderit amet vero tempore ipsum sequi rerum impedit. Voluptates.<br>
+			<input type="button" value="удалить"></p>
+		</div>
+		<button ></button>
+	</section>
+	<script>
+	window.onload = function () {
+		var myDiv = document.getElementById('myDiv');
+		console.log(myDiv);
+
+			myDiv.addEventListener("click", function(e) {
+		        var target = e && e.target || window.event.srcElement;
+		        var myP = target.parentNode;
+                 console.log('myP ',myP );
+                this.removeChild(myP);
+            })
+	};
+		
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin: 0;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		margin:0 auto;
+		overflow: hidden;
+	}
+	ul{
+		/* width: 800px; */
+		list-style: none;
+		padding: 0;
+		position: relative;
+	}
+	li {
+		width: 200px;
+		height: 200px;
+		background: red;
+		float: left;
+	}
+	span{
+		display: inline-block;
+		color: black;
+		border: 1px solid red;
+	}
+	.blue {background: blue;}
+	.grey { background: grey; }
+	.green { background: green }
+</style>
+<body>
+	<div>
+		<ul>
+			<li class="grey"></li>
+			<li class="green"></li>
+			<li class="blue"></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="buttons">
+		<span data-event="prev">prev</span>
+		<span data-event="next">next</span>
+	</div>
+	<script>
+
+	function Slide(){
+		this.ul = document.querySelector('ul'),
+		this.count = this.ul.children.length,
+		this.buttons = document.querySelector('.buttons'),
+		this.static = this.ul.firstElementChild.clientWidth,
+		this.width = this.count*this.static,
+		this.buttons.addEventListener('click',this.handler.bind(this)),
+		this.createStyle('width',this.width,this.ul)
+
+		console.log('this.ul',this.ul);
+		console.log('this.count',this.count);
+		console.log('this.buttons',this.buttons);
+		console.log('this.static',this.static);
+		console.log('this.width',this.width);
+	}
+
+	Slide.prototype.createStyle = function (prop, args, el){
+	el.style.cssText += prop+":"+args+"px";
+	}
+	
+
+
+	Slide.prototype.handler = function (event){
+		var target = event.target.getAttribute('data-event');
+		if(target == "next"){
+			var firstElem = this.ul.firstElementChild,
+			cloneElem = firstElem.cloneNode(true);
+			this.ul.appendChild(cloneElem);
+			this.createStyle('left', -this.static,this.ul);
+			firstElem.parentNode.removeChild(firstElem);
+			this.createStyle('left', 0,this.ul);
+		} else {
+			var lastElem = this.ul.lastElementChild,
+			firstElem = this.ul.firstElementChild;
+			console.log(lastElem);
+			console.log(firstElem);
+			cloneElem = lastElem.cloneNode(true);
+			console.log('cloneElem',cloneElem);
+			this.createStyle('right', -this.static,this.ul);
+			this.ul.insertBefore(cloneElem, firstElem);
+			this.createStyle('right', 0,this.ul);
+			lastElem.parentNode.removeChild(lastElem);
+
+		}
+
+	}
+	new Slide();
+              
+	</script>
+</body>
+</html>

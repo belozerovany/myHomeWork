@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin: 0;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		overflow: hidden;
+	}
+	ul{
+		list-style: none;
+		padding: 0;
+		position: relative;
+	}
+	li {
+		width: 200px;
+		height: 200px;
+		float: left;
+	}
+	span{
+		display: inline-block;
+		color: black;
+		border: 1px solid red;
+	}
+</style>
+<body>
+	<div>
+		<ul>
+			<li><img src="http://www.topglobus.ru/skin/smile/s10942.gif" alt=""> </li>
+			<li><img src="https://s2-ssl.dmcdn.net/Ot6VO/200x200-B2a.jpg" alt=""></li>
+			<li><img src="http://cheb-room.ru/uploads/cheb/2016/11/w9RC4W-QqXw-200x200.jpg" alt=""> </li>
+			<li><img src="https://s2-ssl.dmcdn.net/Ot6VO/200x200-B2a.jpg" alt=""></li>
+		</ul>
+	</div>
+	<span>next</span>
+	<script>
+
+		(function(){
+			var ul = document.querySelector('ul'),
+				click = document.querySelector('span'),
+				first = ul.firstElementChild,
+				count = ul.children.length,
+				static = first.clientWidth,
+				/*static = parseInt(getComputedStyle(ul.parentNode).getPropertyValue('width')),*/
+				width = static * count,
+				child = ul.firstChild,
+				limit = -(static * (count - 1));
+                    console.log('first',first);
+			        console.log('static',static);
+			        console.log('width',width);
+
+                createStyle('width', width, ul);
+                
+                click. addEventListener('click',myClick);
+
+				function myClick() {
+					var left = isNaN(parseInt(ul.style.left)) ? 0 : parseInt(ul.style.left);
+					if(left == limit){
+						return;
+					} else {
+						createStyle('left', (left - static), ul);
+					}
+				}
+
+            
+
+                function createStyle(prop, args, el){
+				el.style.cssText += prop+":"+args+"px";
+				}
+
+				
+
+			
+		})();
+	</script>
+</body>
+</html>
